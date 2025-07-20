@@ -1,0 +1,31 @@
+security:
+    enable_authenticator_manager: true
+    password_hashers:
+        App\Entity\User:
+            id: 'App\Security\PasswordHasher'
+
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    firewalls:
+        main:
+            lazy: true
+            provider: app_user_provider
+            custom_authenticators:
+            - App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+                target: app_login
+                invalidate_session: true
+
+
+    access_control:
+        #- { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/reset-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/admin, roles: ROLE_ADMIN }
+        #- { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/index, roles: IS_AUTHENTICATED_FULLY }

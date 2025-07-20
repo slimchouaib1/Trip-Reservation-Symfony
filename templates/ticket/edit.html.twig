@@ -1,0 +1,37 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Ticket{% endblock %}
+
+{% block body %}
+    <h1>Edit Ticket</h1>
+
+    {{ include('ticket/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_ticket_index') }}">back to list</a>
+
+    {{ include('ticket/_delete_form.html.twig') }}
+{% endblock %}
+#}
+{% extends "dashboard/adminbase.html.twig" %}
+{% block title %}Admin Dashboard - Tickets
+{% endblock %}
+{% block AdminContent %}
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="card mb-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">Edit Ticket</h5>
+                </div>
+                <div class="card-body">
+                    {{ include('ticket/_form.html.twig', {'button_label': 'Update'}) }}
+
+                    <a href="{{ path('app_ticket_index') }}">back to list</a>
+
+                    {{ include('ticket/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block tabletitle %} Travellers list {% endblock %}
+{% block pagetitle %} <h2>Travellers</h2> {% endblock %}
+{% block body %}
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Num_pass</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for traveler in travelers %}
+            <tr>
+                <td>{{ traveler.id }}</td>
+                <td>{{ traveler.name }}</td>
+                <td>{{ traveler.numPass }}</td>
+                <td>
+                    <a href="{{ path('app_traveler_show', {'id': traveler.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('app_traveler_edit', {'id': traveler.id}) }}" class="btn btn-success">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_traveler_new') }}" class="btn btn-warning">Create new</a>
+{% endblock %}

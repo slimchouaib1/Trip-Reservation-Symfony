@@ -1,0 +1,32 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block tabletitle %} New Ticket {% endblock %}
+{% block pagetitle %} <h2>Tickets</h2> {% endblock %}
+
+{% block body %}
+
+    {{ include('ticket/_form.html.twig') }}
+
+    <a href="{{ path('app_ticket_index') }}" class="btn btn-primary">back to list</a>
+{% endblock %}
+#}
+{% extends "dashboard/adminbase.html.twig" %}
+{% block title %}Admin Dashboard - Tickets
+{% endblock %}
+{% block AdminContent %}
+	<div class="content-wrapper">
+		<div class="container-xxl flex-grow-1 container-p-y">
+			<div class="card mb-4">
+				<div class="card-header d-flex align-items-center justify-content-between">
+					<h5 class="mb-0">Edit Ticket</h5>
+				</div>
+				<div class="card-body">
+					{{ include('ticket/_form.html.twig') }}
+					<a href="{{ path('app_ticket_index') }}" class="btn btn-primary">back to list</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
